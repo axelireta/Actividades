@@ -25,7 +25,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btnSend.setOnClickListener {
-            val intent = Intent(this, SecondaryActivity::class.java)
+
+            val bundle = Bundle().apply{
+                putString("USER_NAME", binding.txtName.text.toString())
+                putInt("EDAD", 50)
+                putBoolean("ES_ESTUDIANTE", true)
+            }
+
+            val intent = Intent(this, SecondaryActivity::class.java).apply{
+                putExtra("USER_NAME", binding.txtName.text.toString())
+
+            }
             startActivity(intent)
         }
     }
